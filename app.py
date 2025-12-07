@@ -15,7 +15,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 # We retrieve the API key from Streamlit secrets (configured in Step 4)
 if "GEMINI_API_KEY" in st.secrets:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.5-flash')
 else:
     st.error("API Key missing. Please set it in Streamlit Secrets.")
 
@@ -107,3 +107,4 @@ if prompt := st.chat_input("Tell me what's on your mind..."):
         st.markdown(bot_reply)
 
     st.session_state.messages.append({"role": "assistant", "content": bot_reply})
+
