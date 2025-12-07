@@ -100,9 +100,10 @@ if prompt := st.chat_input("Tell me what's on your mind..."):
         response = model.generate_content(full_prompt)
         bot_reply = response.text
     except Exception as e:
-        bot_reply = "I'm having trouble connecting to my brain right now. Try again?"
+        bot_reply = f"🚨 ERROR DETAILS: {e}"
 
     # Display Response
     with st.chat_message("assistant"):
         st.markdown(bot_reply)
+
     st.session_state.messages.append({"role": "assistant", "content": bot_reply})
